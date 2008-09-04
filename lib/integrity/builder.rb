@@ -38,9 +38,17 @@ module Integrity
     end
 
     private
+    
       def export_directory
-        Integrity.config[:export_directory] /
-          @uri.path[1..-1].sub('/', '-').chomp(@uri.extname) + "-#{@branch}"
+        base_export_directory / "#{path_for_uri}-#{@branch}"
+      end
+      
+      def base_export_directory
+        Integrity.config[:export_directory]
+      end
+      
+      def path_for_uri
+        GitUri.new(@uri.to_s).local_pathname
       end
 
       def run_build_script
