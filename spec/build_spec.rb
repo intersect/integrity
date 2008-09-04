@@ -95,7 +95,15 @@ describe Integrity::Build do
   
   it "should send an email after saving with valid data" do
     @build.attributes = valid_attributes
+    Integrity.stub!(:config).and_return(:email => :email_attrs)
     Integrity::Notifier::Email.should_receive(:notify_of_build).with(@build)
+    @build.save
+  end
+  
+  it "should not send an email if there is no email setup in the config" do
+    @build.attributes = valid_attributes
+    Integrity.stub!(:config).and_return({ })
+    Integrity::Notifier::Email.should_not_receive(:notify_of_build)
     @build.save
   end
 end

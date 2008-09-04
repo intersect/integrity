@@ -48,13 +48,18 @@ module Integrity
       end
     end
     
-    private
-      def send_email
-        Notifier::Email.notify_of_build(self)
-      end
+  private
     
-      def sha1?(string)
-        string =~ /^[a-f0-9]{40}$/
-      end
+    def send_email
+      Notifier::Email.notify_of_build(self) if email_build?
+    end
+    
+    def email_build?
+      Integrity.config[:email] ? true : false
+    end
+    
+    def sha1?(string)
+      string =~ /^[a-f0-9]{40}$/
+    end
   end
 end
