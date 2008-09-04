@@ -27,16 +27,6 @@ module Integrity
       nil
     end
     
-    class DirectoryExporter
-      def initialize(uri, export_directory)
-        @uri = uri
-        @export_directory = export_directory
-      end
-      
-      attr_reader :uri
-      attr_reader :export_directory
-    end
-
     private
     
       def export_directory

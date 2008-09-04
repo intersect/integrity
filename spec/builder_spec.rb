@@ -171,23 +171,3 @@ describe Integrity::Builder do
     end
   end
 end
-
-describe Integrity::Builder::DirectoryExporter do
-  before :each do
-    @uri = mock "uri"
-    @export_directory = "/a/path/to/a/file"
-    @exporter = Integrity::Builder::DirectoryExporter.new(@uri, @export_directory)
-  end
-  
-  it "should have a uri" do
-    @exporter.uri.should == @uri
-  end
-  
-  it "should have an export directory" do
-    @exporter.export_directory.should == @export_directory
-  end
-  
-  describe "for a public git scm on github" do
-    it "should construct a unix style path"
-  end
-end
