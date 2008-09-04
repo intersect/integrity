@@ -5,3 +5,7 @@ config/config.yml
 coverage
 integrity.db
 exports
+
+# emacs files
+\#*\#
+.\#*
