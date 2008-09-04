@@ -29,7 +29,7 @@ module Integrity
     ]
     
     uris.each do |uri|
-      it "should parse the uri" do
+      it "should parse the uri #{uri}" do
         git_url = to_git_uri(uri)
         git_url.local_pathname.should == "path-to-repo"
       end
