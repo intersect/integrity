@@ -28,7 +28,7 @@ module Integrity
     end
     
     def local_pathname
-      strip_extension(path)
+      strip_extension(path).gsub("/", "-")
     end
     
   private
