@@ -41,6 +41,7 @@ module Integrity
     {}
   end
 
+  autoload :GitUri,   'git_uri'
   autoload :Project,  'project'
   autoload :Build,    'build'
   autoload :Builder,  'builder'
